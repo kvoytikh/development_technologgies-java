@@ -1,31 +1,44 @@
 package com.company.java;
 import com.company.java.details.Detail;
+import com.company.java.details.Details;
 import com.company.java.interfaces.MakingProcess;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 
 public class Chair implements MakingProcess {
     protected List<Detail> details = new ArrayList<>();
 
+
     private Brand brand;
     private ChairState state;
+    private int price;
     public List<Detail> addDetail(Detail detail) {
         this.details.add(detail);
         return details;
     }
 
-    public Chair(Brand brand) {
+    public Chair(Brand brand, int price) {
         this.state = ChairState.NOT_READY;
         this.brand = brand;
+        this.price = price;
         ChairState.showState(state);
     }
 
     public ChairState getState() {
         return state;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public List<Detail> getDetails() {
+        return details;
     }
 
     @Override
@@ -47,6 +60,7 @@ public class Chair implements MakingProcess {
             System.out.println(iter.next().getKind() + str);
         }
     }
+
 
     @Override
     public boolean equals(Object o) {

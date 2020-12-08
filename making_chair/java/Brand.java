@@ -32,4 +32,5 @@ public enum Brand {
     public int getChairLeg() {
         return chairLeg;
     }
+
 }
